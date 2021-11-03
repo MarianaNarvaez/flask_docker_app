@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Plant Data
+{% endblock %}
+
+{% block content %}
+<div id="form">
+    <form id="formPlant" method="POST" action="{{ url_for('getPlantData') }}">
+        <link rel= "stylesheet"  href= "{{ url_for('static',filename='/css/main.css') }}">
+        <link rel= "stylesheet"  href= "{{ url_for('static',filename='/css/plantData.css') }}">
+        <div id="content">
+            <div id="header">
+                <h1>Labor Intensity</h1> 
+                <input id="plantName" name=plantName class="input" type="text" value="{{plantName}}" readonly></input>
+                <div>
+                    <div id="lastMonth"><input id="inpLastMonth" name=LastDate class="input" type="text" value="Last month updated: {{LastDate}}" readonly></input></div>
+                    <div id="MonthUpdate"><input id="inpMonthUpdate" name=dateUpdate class="input" type="text" value="Month selected to update: {{dateUpdate}}" readonly></input></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="h2Div">
+                <h2>Plant Data</h2>
+            </div>
+            <div id="divBtnContents">
+                <div id="divBtnBack">
+                    <button type="submit" id="backBtn" name="action" class="btn btn-secondary" value="Back">Back</button>
+                </div>
+                <div id="divBtn">
+                    <button type="submit" id="nextBtn" name="action" class="btn btn-secondary" value="goExcep">Go to Exception</button>
+                </div>
+            </div>
+        </div>
+        <div id="line"></div> 
+        <div>
+            <div id="divTableA">
+                <div>
+                    <td><input id="blockTittle" class="input" type="text" name="labelA" value='A. ANNUAL REPORTING'></td>
+                </div>
+                <table id="tableA" class="table">
+                    <tbody>
+                        {% for key, value in labelsA.items(): %}
+                            {% if key=="wPerShift" %}
+                                <tr>
+                                    <td id="column1"><input id="inputText" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                    
+                                    <td id="column2">
+                                    <select class="shifdropdown" id=shifdropdown name={{value[1]}}>
+                                        <option {% if value[2]==6 %} selected {% endif %} class="dropdown-item">6</option>
+                                        <option {% if value[2]==8 %} selected {% endif %} class="dropdown-item">8</option>
+                                        <option {% if value[2]==12 %} selected {% endif %} class="dropdown-item">12</option>
+                                    </select></td>
+
+                                </tr>
+                            {% elif key=="wPerYear" or key =="wPerWeek"%}
+                                <tr>
+                                    <td id="column1"><input id="inputText" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                                    <td id="column2"><input id="inputBoxPlant" value={{value[2]}} class="input100" type="number" step="0.01" max="52" min="0" name={{value[1]}} ></td>
+                                </tr>
+                            {% elif key=="sPerDay" %}
+                                <tr>
+                                    <td id="column1"><input id="inputText" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                    
+                                    <td id="column2">
+                                    <select class="shifdropdown" id=shifdropdown name={{value[1]}}>
+                                        <option {% if value[2]==2 %} selected {% endif %} class="dropdown-item">2</option>
+                                        <option {% if value[2]==3 %} selected {% endif %} class="dropdown-item">3</option>
+                                        <option {% if value[2]==4 %} selected {% endif %} class="dropdown-item">4</option>
+                                    </select></td>
+                                </tr>
+                            {% elif key=="tCouHoli" %}
+                                <tr>
+                                    <td id="column1"><input id="inputText" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                                    <td id="column2"><input id="inputBoxPlant" value={{value[2]}} class="input100" type="number" step="0.01" max="365" min="0" name={{value[1]}} ></td>
+                                </tr>
+                            {% elif key=="shifVacDay" or key=="dayVacDay"%}
+                                <tr>
+                                    <td id="column1"><input id="inputText" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                                    <td id="column2"><input id="inputBoxPlant" value={{value[2]}} class="input100" type="number" step="0.01" max="53" min="0" name={{value[1]}} ></td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td id="column1"><input id="inputText" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                                    <td id="column2"><input id="inputBoxPlant" value={{value[2]}} class="input100" type="number" step="0.1"  min="0" name={{value[1]}} ></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table> 
+            </div>
+            <div id="divTableB">
+                <div>
+                    <td><input id="blockTittle" class="input" type="text" name="labelA" value='B. MONTHLY REPORTING'></td>
+                </div>
+                <table id="tableA" class="table">
+                    <tbody>
+                        {% for key, value in labelsB.items(): %}
+                            {% if key=="shiftAbsent" or key=="shiftOver" or key=="daiAbsent" or key=="daiOver" or key=="currLabor" or key=="tonPulled"%}
+                                <tr>
+                                    <td id="column1"><input id="inputText" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                                    <td id="column2"><input id="inputBoxPlant" value={{value[3]}} class="input100" type="number" step="0.01" min="0" name={{value[1]}} ></td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td id="column1"><input id="inputText" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                                    <td id="column2"><input id="inputBoxPlant" value={{value[3]}} class="input100" type="number" step="1.0" min="0" name={{value[1]}} ></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+<footer>
+    <p>For see more information about Labor Intensity app go to: <a href="https://owensillinois.sharepoint.com/:f:/r/teams/TSC/Labor/Manning%20Templates?csf=1&web=1&e=UMXwEe">Labor Intensity</a></p>
+</footer>
+{% endblock %}

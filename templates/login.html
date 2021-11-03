@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block content %}
+  <link rel= "stylesheet"  href= "{{ url_for('static',filename='/css/login.css') }}">
+  <div id="loading"></div>
+  <div id="content">your html content here......</div>
+  <script type="text/javascript">// <![CDATA[
+    function preloader(){
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("content").style.display = "block";
+    }//preloader
+    window.onload = preloader;
+// ]]></script>
+  <div style="background-image: url('images/botellas.jpg');"></div>
+  <div id=formCont>
+		<form method="POST" action="{{ url_for('headerLoggin') }}">
+      <h2 id='tittle'>Labor Intensity<br/>Data Collection Tool</h2> 
+      <h2>Login to continue</h2>
+      <div class=dropdownclass id=dropdown>
+        <select class="dropdown-menu domain" method="POST" name="domain">
+          <option class="dropdown-item" value="LA">LA</option>
+          <option class="dropdown-item" value="NA">NA</option>
+          <option class="dropdown-item" value="EU">EU</option>
+          <option class="dropdown-item" value="AP">AP</option>
+          <option class="dropdown-item" value="AP">Corp</option>
+        </select>
+      </div>
+      <input placeholder='Email' type="text" name="user" data-validate = "Valid email is required: ex@abc.xyz">
+      <input placeholder='Password' type="password" name="password">
+
+      {% if typeLogin==2 %}
+        <span>Domain, user or password incorrect</span>
+      {% endif %}
+
+      {% if typeLogin==3 %}
+        <span>you don't have access, please contact the area in charge.</span>
+      {% endif %}
+
+      {% if typeLogin==4 %}
+        <span>you don't have access to any plant, please contact the area in charge.</span>
+      {% endif %}
+
+      <button onclick=click()>
+        Login
+      </button>  
+    </form>
+	</div>
+{% endblock %}

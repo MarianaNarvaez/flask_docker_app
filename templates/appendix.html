@@ -1,0 +1,511 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Appendix
+{% endblock %} 
+
+{% block content %}  
+<div id="form">
+    <form id="formAppend" class="login100-form validate-form" method="POST" action="{{ url_for('Appendix.GetAppendix') }}">
+        <link rel= "stylesheet"  href= "{{ url_for('static',filename='/css/main.css') }}">
+        <link rel= "stylesheet"  href= "{{ url_for('static',filename='/css/appendix.css') }}">
+        <div id="content">
+            <div id="header">
+                <h1>Labor Intensity</h1> 
+                <input id="plantName" name=plantName class="input" type="text" value="{{plantName}}" readonly></input>
+                <div>
+                    <div id="lastMonth"><input id="inpLastMonth" name=LastDate class="input" type="text" value="Last month updated: {{LastDate}}" readonly></input></div>
+                    <div id="MonthUpdate"><input id="inpMonthUpdate" name=dateUpdate class="input" type="text" value="Month selected to update: {{dateUpdate}}" readonly></input></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="h2DivApp">
+                <h2>Appendix A: Worksheet</h2>
+            </div>
+            <div id="divBtnContentsApp">
+                <div id="divBtnBack">
+                    <button type="submit" id="backBtn" name="action" class="btn btn-secondary" value="Back">Back to Exception</button>
+                </div>
+                <div id="divBtn">
+                    <button type="submit" id="nextBtn" name="action" class="btn btn-secondary" value="Validate">Validate</button>
+                </div>
+            </div>
+        </div>
+        <div id="lineApp"></div>
+        <div>
+            <td><input id="tittle" class="input" type="text" value="OI Payroll Total" readonly></td>
+        </div>
+        <div>
+            <div> 
+                <td><input id="blockTittle" class="input" type="text" name="AreaMgmt" value='MGMT' readonly></td>
+            </div>
+            <table id="tableAppMG" class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Role</th>
+                        <th style="text-align:center">Temp</th>
+                        <th style="text-align:center">Staff</th>
+                        <th style="text-align:center">Daily<br/>Hourly</th>
+                        <th style="text-align:center">Shift<br/>Hourly</th>
+                        <th style="text-align:center">Outsource</th>
+                        <th style="text-align:center">Other</th>
+                        <th style="text-align:center">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in AMgmt.items(): %}
+                       <tr>
+                             <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne" type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne" type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne" type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne" type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                             <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div>
+                <td><input id="blockTittle" class="input" type="text" name="AreaBatchFurnt" value='Batch and Furnace' readonly></td>
+            </div>
+            <table id="tableApp" class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Role</th>
+                        <th style="text-align:center">Temp</th>
+                        <th style="text-align:center">Staff</th>
+                        <th style="text-align:center">Daily<br/>Hourly</th>
+                        <th style="text-align:center">Shift<br/>Hourly</th>
+                        <th style="text-align:center">Outsource</th>
+                        <th style="text-align:center">Other</th>
+                        <th style="text-align:center">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in ABatchFurnt.items(): %}
+                       <tr>
+                             <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                             <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div>
+                <td><input id="blockTittle" class="input" type="text" name="AreaForming" value='Forming' readonly></td>
+            </div>
+            <table id="tableApp" class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Role</th>
+                        <th style="text-align:center">Temp</th>
+                        <th style="text-align:center">Staff</th>
+                        <th style="text-align:center">Daily<br/>Hourly</th>
+                        <th style="text-align:center">Shift<br/>Hourly</th>
+                        <th style="text-align:center">Outsource</th>
+                        <th style="text-align:center">Other</th>
+                        <th style="text-align:center">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in AForming.items(): %}
+                       <tr>
+                             <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                             <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div>
+                <td><input id="blockTittle" class="input" type="text" name="AreaMachinRepa" value='Machine Repair' readonly></td>
+            </div>
+            <table id="tableApp" class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Role</th>
+                        <th style="text-align:center">Temp</th>
+                        <th style="text-align:center">Staff</th>
+                        <th style="text-align:center">Daily<br/>Hourly</th>
+                        <th style="text-align:center">Shift<br/>Hourly</th>
+                        <th style="text-align:center">Outsource</th>
+                        <th style="text-align:center">Other</th>
+                        <th style="text-align:center">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in AMachinRepa.items(): %}
+                       <tr>
+                             <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                             <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div>
+                <td><input id="blockTittle" class="input" type="text" name="AreaMoldRepaa" value='Mold Repair' readonly></td>
+            </div>
+            <table id="tableApp" class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Role</th>
+                        <th style="text-align:center">Temp</th>
+                        <th style="text-align:center">Staff</th>
+                        <th style="text-align:center">Daily<br/>Hourly</th>
+                        <th style="text-align:center">Shift<br/>Hourly</th>
+                        <th style="text-align:center">Outsource</th>
+                        <th style="text-align:center">Other</th>
+                        <th style="text-align:center">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in AMoldRepa.items(): %}
+                       <tr>
+                             <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                             <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div>
+                <td><input id="blockTittle" class="input" type="text" name="AreaLehr" value='Lehr' readonly></td>
+            </div>
+            <table id="tableApp" class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Role</th>
+                        <th style="text-align:center">Temp</th>
+                        <th style="text-align:center">Staff</th>
+                        <th style="text-align:center">Daily<br/>Hourly</th>
+                        <th style="text-align:center">Shift<br/>Hourly</th>
+                        <th style="text-align:center">Outsource</th>
+                        <th style="text-align:center">Other</th>
+                        <th style="text-align:center">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in ALehr.items(): %}
+                       <tr>
+                             <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                             <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div>
+                <td><input id="blockTittle" class="input" type="text" name="AreaSelCol" value='Selecting Cold End' readonly></td>
+            </div>
+            <table id="tableApp" class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Role</th>
+                        <th style="text-align:center">Temp</th>
+                        <th style="text-align:center">Staff</th>
+                        <th style="text-align:center">Daily<br/>Hourly</th>
+                        <th style="text-align:center">Shift<br/>Hourly</th>
+                        <th style="text-align:center">Outsource</th>
+                        <th style="text-align:center">Other</th>
+                        <th style="text-align:center">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in ASelCol.items(): %}
+                       <tr>
+                             <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                             <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div>
+                <td><input id="blockTittle" class="input" type="text" name="AreaQuaAssu" value='Quality Assurance' readonly></td>
+            </div>
+            <table id="tableApp" class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Role</th>
+                        <th style="text-align:center">Temp</th>
+                        <th style="text-align:center">Staff</th>
+                        <th style="text-align:center">Daily<br/>Hourly</th>
+                        <th style="text-align:center">Shift<br/>Hourly</th>
+                        <th style="text-align:center">Outsource</th>
+                        <th style="text-align:center">Other</th>
+                        <th style="text-align:center">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in AQuaAssu.items(): %}
+                       <tr>
+                             <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                             <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div>
+                <td><input id="blockTittle" class="input" type="text" name="AreaColdEnd" value='Cold End Maintenance' readonly></td>
+            </div>
+            <table id="tableApp" class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Role</th>
+                        <th style="text-align:center">Temp</th>
+                        <th style="text-align:center">Staff</th>
+                        <th style="text-align:center">Daily<br/>Hourly</th>
+                        <th style="text-align:center">Shift<br/>Hourly</th>
+                        <th style="text-align:center">Outsource</th>
+                        <th style="text-align:center">Other</th>
+                        <th style="text-align:center">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in AColdEnd.items(): %}
+                       <tr>
+                             <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                             <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div>
+                <td><input id="blockTittle" class="input" type="text" name="AreaBuiMain" value='Building Maintenance / Plant Engineering' readonly></td>
+            </div>
+            <table id="tableApp" class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Role</th>
+                        <th style="text-align:center">Temp</th>
+                        <th style="text-align:center">Staff</th>
+                        <th style="text-align:center">Daily<br/>Hourly</th>
+                        <th style="text-align:center">Shift<br/>Hourly</th>
+                        <th style="text-align:center">Outsource</th>
+                        <th style="text-align:center">Other</th>
+                        <th style="text-align:center">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in ABuiMain.items(): %}
+                       <tr>
+                             <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                             <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div>
+                <td><input id="blockTittle" class="input" type="text" name="AreaOther" value='Logistics' readonly></td> 
+            </div>
+            <table id="tableApp" class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Role</th>
+                        <th style="text-align:center">Temp</th>
+                        <th style="text-align:center">Staff</th>
+                        <th style="text-align:center">Daily<br/>Hourly</th>
+                        <th style="text-align:center">Shift<br/>Hourly</th>
+                        <th style="text-align:center">Outsource</th>
+                        <th style="text-align:center">Other</th>
+                        <th style="text-align:center">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in ALogis.items(): %}
+                       <tr>
+                             <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                             <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <div>
+                <td><input id="blockTittle" class="input" type="text" name="AreaOther" value='Other' readonly></td> 
+            </div>
+            <table id="tableApp" class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center">Role</th>
+                        <th style="text-align:center">Temp</th>
+                        <th style="text-align:center">Staff</th>
+                        <th style="text-align:center">Daily<br/>Hourly</th>
+                        <th style="text-align:center">Shift<br/>Hourly</th>
+                        <th style="text-align:center">Outsource</th>
+                        <th style="text-align:center">Other</th>
+                        <th style="text-align:center">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in AOther.items(): %}
+                       <tr>
+                             <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                             <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                             <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="divAdmin">
+            <div>
+                <td><input id="blockTittle" class="input" type="text" name="AreaAdmin" value='Administration' readonly></td>
+            </div>
+            <table id="tableApp" class="table">
+                <thead>
+                    <tr>
+                        <th>Role</th><th>Temp</th><th>Staff</th><th>Daily/Hourly</th><th>Shift/Hourly</th><th>Outsource</th><th>Other</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in AAdmin.items(): %} 
+                        {% if value[0]!="Canteen" and value[0]!="Laundry"%}
+                            <tr>
+                                <td id="column1App"><input id="inputName" value="{{value[0]}}" class="input" type="text" name={{key}} readonly></td>
+                                <td id="column3"><input id="inputBoxAllo" value="{{value[1]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[7]}} ></td>
+                                <td id="column3"><input id="inputBoxAllo" value="{{value[2]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[8]}} ></td>
+                                <td id="column3"><input id="inputBoxAllo" value="{{value[3]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[9]}} ></td>
+                                <td id="column3"><input id="inputBoxAllo" value="{{value[4]}}" class="input100 sumAppenOne"  type="number" step="0.01" min="0" name={{value[10]}} ></td>
+                                <td id="column3"><input id="inputBoxAllo" value="{{value[5]}}" class="input100 sumOut"  type="number" step="0.01" min="0" name={{value[11]}} ></td>
+                                <td id="column3"><input id="inputBoxAllo" value="{{value[6]}}" class="input100 sumOth"  type="number" step="0.01" min="0" name={{value[12]}} ></td>
+                                <td id="columnComm"><input id="inputBoxApp" value="{{value[15]}}" class="input100" name={{value[14]}}></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="space"> 
+
+            </div>
+            <hr class="lineOne">
+            <div class="divAlloTotal div1">
+                <div class="divLabelTotal"> 
+                    <label id="labelTotal">Total O-I</label>
+                </div>
+                <div  id="sumAppend" class="divAppendtotal1">
+                    <label id="sumAppend" name=sumAppend class="Appendtotal1">0</label>
+                    <input type="hidden" name=sumTotalOI id="totalOI">
+                </div>
+            </div>
+            <hr class="lineMiddle">
+            <div class="divAlloTotal div2">
+                <div class="divLabelTotal">
+                    <label id="labelTotal">Total Outsource</label>
+                </div>
+                <div id="sumOut" class="divAppendtotal2">
+                    <label id="sumOut" name=sumOut class="Appendtotal2">0</label>
+                    <input type="hidden" name=sumTotalOut id="totalOut">
+                </div>
+            </div>
+            <hr class="lineTwo">
+            <div class="divAlloTotal div3">
+                <div class="divLabelTotal">
+                    <label id="labelTotal">Total Other</label>
+                </div>
+                <div id="sumOth" class="divAppendtotal3">
+                    <label id="sumOth" name=sumOth class="Appendtotal3">0</label>
+                </div>
+            </div>
+
+        </div>
+  
+
+            
+    </form>
+    <!-- Hidden variables for process controlling -->
+    
+
+    <!-- <input id="guardTotal" type="hidden" value="22" style="display: none" readOnly/>-->
+
+
+</div>
+<footer id="footer">
+    <p>For see more information about Labor Intensity app go to: <a href="https://owensillinois.sharepoint.com/:f:/r/teams/TSC/Labor/Manning%20Templates?csf=1&web=1&e=UMXwEe">Labor Intensity</a></p>
+</footer>
+{% endblock %}
+

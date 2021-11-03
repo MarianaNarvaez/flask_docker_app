@@ -1,0 +1,63 @@
+{% extends 'base.html' %} 
+
+{% block title %}
+    Header
+{% endblock %} 
+
+{% block content %} 
+<link rel= "stylesheet"  href= "{{ url_for('static',filename='/css/header.css') }}">
+<body>
+  <div id=background>
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">Labor Intensity</h2>
+      </div>
+      <form class= "dropdown moCont" method="POST" action="{{ url_for('plantData') }}">
+        {% if showPlant==False %}
+          <div class="modal-body " id="modal">
+            <div id="selPlant"><h3 class="noTopHeader">Select Plant:</h3></div>
+              <div id="divDropPlant">
+                <select id="dropPlant" name= plantsList class="btn btn-light" type="button" data-toggle="dropdown"> 
+                  {% for plant in plantsList %}
+                    <option value= "{{plant}}" {% if plant.status==0 %} SELECTED="selected"{% endif %}>{{plant}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          <div class="modal-footer">
+            <button type="submit" id="searchBtn" name="action" class="btn btn-secondary" value="Search">Search</button>
+            <!--<input type ="submit" name="action" value="Search">-->
+          </div>
+        {% endif %}
+        {% if showPlant==True %}
+          <div class="modal-body no-padding" id="modal">		  
+            <input class="input" type="text" name=plantName value="{{plantName}}"></input>
+          </div>
+        {% endif %}
+        {% if showDate==True %}
+          <div class="modal-body no-padding" id="modal">
+            <h3 name= lastDtUpdat>Last Month Updated: {{LastDate}} </h3>
+            <div>
+              <div id="selDate"><h3 class="noTopHeader" id="selDatelabel" name= lastDtUpdat>Choose month to modify:</h3></div>
+              <div id="divDropDate">
+                <select id="dropDate"  name= listDates > <!--</select>method="POST" action"/"-->
+                  {% for date in listDates %}
+                    <option value= "{{date}}" {% if date.status==0 %} SELECTED="selected"{% endif %}>{{date}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" id="backBtn" name="action" class="btn btn-secondary" value="Back">Back</button>
+            <button type="submit" id="searchBtn" name="action" class="btn btn-secondary" value="Select">Select</button>
+          </div>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+</body>
+{% endblock %}
+
+
+

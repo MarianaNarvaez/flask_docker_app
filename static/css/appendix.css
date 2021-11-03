@@ -1,0 +1,256 @@
+input[type='text']:not(.userListBox){
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0px 0px 0px 0px !important; 
+    white-space:normal !important;
+    min-height: 24px !important;
+}
+
+h2{
+    position: relative;
+    top: 15px;
+    width: 100%;
+    color: rgb(149 23 23);
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 34px; 
+    font-weight: 100; 
+    line-height: 50px; 
+    letter-spacing: 1px; 
+    padding: 0 0 25px;
+    margin-top: 0px; 
+}
+
+#lineApp {
+    position: relative;
+    top: 90px;
+    left: 9%;
+    border-bottom: double #555;
+    width: 82%;
+}
+
+#tittle{
+    position: relative;
+    top: 20px;
+    width: 60%;
+    left: 9%;
+    color: #7c795d; 
+    font-family: 'Source Sans Pro', sans-serif; 
+    font-size: 22px; 
+    font-weight: 600; 
+    line-height: 32px; 
+    margin: 1% 0 1%;
+}
+
+#blockTittle{
+    position: relative;
+    top: 20px;
+    width: 405px;
+    margin-bottom: 20px;;
+    left: 9%;
+    color:rgb(149 23 23);
+    font-family: 'Source Sans Pro', sans-serif; 
+    font-size: 20px; 
+    font-weight: 600; 
+    line-height: 32px; 
+    margin: 1% 0 1%;
+}
+
+#tableApp{
+    position: relative;
+    height: 100%;
+    left: 9%;
+    width: 82%;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+#tableAppMG{
+    position: relative;
+    height: 100%;
+    left: 9%;
+    width: 82%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+#h2DivApp {
+    position: relative;
+    float: left;
+    top: 15px;
+    left: 9%;
+    width: 60%;
+}  
+
+#column1App {
+    width: 20%;
+}
+
+#column3{
+    width: 4%;
+}
+
+#columnComm{
+    width: 35%;
+}
+
+#inputName{
+    width: 344px;
+}
+
+#thLabel{
+    width: 50%;
+}
+
+#inputBoxAllo{
+    width: 65px;
+}
+
+#inputBoxApp{
+    width: 101%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+#divBtnContentsApp{
+    position: relative;
+    float: left;
+    top: 38px;
+    left: 161px;
+    width: 20%;
+}
+
+#appeBtn{
+    position: relative;
+    color: white;
+    background-color: rgb(149 23 23);
+}
+
+#alloBtn{
+    position: relative;
+    color: white;
+    background-color: rgb(149 23 23);
+    left: 10%;
+}
+
+#totAppend{
+    position: relative;
+    top: 32px;
+    width: 12%; 
+    float: right;
+    color: rgb(149 23 23);
+    left: -48%;
+    font-size: 28px; 
+    font-weight: 600; 
+}
+
+#footer{
+    position: relative;
+    top: 50px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-color: rgb(149 23 23);
+    color: white;
+    text-align: center;
+    padding: 23px 0 38px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.divAlloTotal {
+    position: relative;
+    height : 37px;
+    font-size: 22px; 
+    font-weight: 600;
+    left: 9%;
+  }
+
+.divAdmin{
+    margin-bottom: 37px;
+}
+
+hr{
+    position: relative;
+    left: 9%;
+    margin-bottom: 9px;
+    margin-top: 1px;
+    margin-left: 0px;
+
+    border-top: 3px double #aa1e09
+}
+ 
+.space{
+    height: 40px;
+}
+
+hr.lineOne{
+    width: 731px;
+    border-top: 3px double #242525
+}
+
+hr.lineMiddle{
+    width: 820px;
+}
+
+hr.lineTwo{
+    width: 900px;
+    border-top: 3px double #305a31
+}
+
+
+/*#labelTotal{
+    position: relative;
+    left: 10%;
+}*/
+
+.div2{
+    color: rgb(151, 6, 6);
+}
+
+.div3{
+    color: #305a31
+}
+
+.divLabelTotal{
+    position: relative;
+    width: 25%;
+}
+
+.divAppendtotal1{
+    position: relative;
+    top: -35px;
+    left: 505px;
+}
+
+.divAppendtotal2{
+    position: relative;
+    top: -35px;
+    left: 741px;
+}
+
+.divAppendtotal3{
+    position: relative;
+    top: -35px;
+    left: 834px;
+}
+
+.Appendtotal2{
+    position: relative;
+    color: rgb(151, 6, 6);
+}
+
+.Appendtotal3{
+    position: relative;
+    color: #305a31
+}
+
+.sumOut{
+    color: rgb(151, 6, 6);
+}
+
+.sumOth{
+    color: #305a31
+}

@@ -1,0 +1,289 @@
+
+input[type='text']:not(.userListBox){
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0px 0px 0px 0px !important;
+    white-space:normal !important;
+    min-height: 24px !important;
+}
+
+#blockTittle{
+    position: relative;
+    margin-bottom: 25px;
+    top: 24px;
+    width: 60%;
+    left: 10%;
+    color: #7c795d; 
+    font-family: 'Source Sans Pro', sans-serif; 
+    font-size: 23px; 
+    font-weight: 600;
+    line-height: 32px; 
+    margin: 2% 0 1%;
+}
+
+h2{
+    position: relative;
+    top: 15px;
+    width: 100%;
+    color: rgb(149 23 23);
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 34px; 
+    font-weight: 100; 
+    line-height: 50px; 
+    letter-spacing: 1px; 
+    padding: 0 0 25px;
+    margin-top: 0px;   
+}
+
+h4{
+    position: relative;
+    top: 8px;
+    left: 10%;
+    color: rgb(149 23 23);
+    font-family: 'Source Sans Pro', sans-serif; 
+    font-size: 19px; 
+    font-weight: 600; 
+    line-height: 32px; 
+    margin: 2% 0 3%;
+}
+
+h4.outLabel{
+    top: 30px;
+}
+
+p{
+    margin: 0%;
+}
+
+.warningBlock1{
+    border: solid;
+    padding: 12px 8px 10px 12px;
+    position: relative;
+    width: 73%;
+    left: 10%;
+    top: 36px;
+    font-size: 13px;
+    color: rgb(8 24 8);
+    background-color: rgb(77 136 108 / 23%);
+}
+
+.remind{
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+#tableExc{
+    position: relative;
+    height: 100%;
+    left: 10%;
+    width: 100%;
+}
+
+#column1Exc {
+    width: 16%;
+}
+
+#column2Exc{
+    width: 3%;
+}
+
+#column3Exc{
+    width: 17%;
+}
+
+#inputBoxExc{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    width: 100%;
+}
+
+.inputBoxExc{
+    width: 100%;
+}
+
+.widthInput{
+    width: 78%;
+}
+
+#totblock1{
+    position: relative;
+    width: 12%;
+    float: right;
+    color:#aa1e09;
+    left: -44%;
+    font-size: 28px; 
+    font-weight: 600; 
+}
+
+#totblock2{
+    position: relative;
+    width: 12%;
+    float: right;
+    color:rgb(149 23 23);
+    left: -32%;
+    font-size: 25px; 
+    font-weight: 600; 
+}
+
+#divLabelBloc1{
+    position: relative;
+    float: left;
+    left: 10%;
+    width: 20%;
+}
+
+#totalLabel {
+    position: relative;
+    color: #aa1e09;
+    font-size: 24px; 
+    font-weight: 600;
+    left: 0%;
+}
+
+#Bock2{
+    position: relative; 
+    top: 40px
+}
+
+#blockTittle2{
+    position: relative;
+    top: 40px;
+    width: 60%;
+    left: -10%;
+    color: #7c795d; 
+    font-family: 'Source Sans Pro', sans-serif; 
+    font-size: 23px; 
+    font-weight: 600;
+    line-height: 32px; 
+    margin: 2% 0 2%;
+}
+
+#divBtnContentsExce{
+    position: relative;
+    float: left;
+    top: 38px;
+    left: -3px;
+    width: 20%;
+}
+
+hr{
+    position: relative;
+    left: 10%;
+    margin-bottom: 9px;
+    margin-left: 0px;
+    width: 39%;
+    border-top: 3px double #aa1e09
+}
+
+hr.lineDownB1{
+    position: relative;
+    top: 30px;
+    left: -10%;
+    margin-left: 0px;
+    width: 39%;
+    border-top: 3px double #aa1e09
+}
+
+hr.lineTopB2{
+    position: relative;
+    margin-top: 30px;
+    top: 2px;
+    left: 10%;
+    width: 53%;
+    border-top: 3px double #aa1e09
+}
+
+hr.lineBotB2{
+    position: relative;
+    margin-bottom: 51px;
+    top: -15px;
+    left: 10%;
+    width: 53%;
+    border-top: 3px double #aa1e09
+}
+
+#totalLabelB{
+    position: relative;
+    color: rgb(149 23 23); 
+    font-size: 24px; 
+    font-weight: 600;
+    left: 10%;
+}
+
+#divTableAExc { 
+    position: relative;
+    float: left;
+    margin: 40px 20px 20px 20px;
+    height: 100%;
+    left: 2%;
+    width: 73%;
+}
+
+.colTitles{
+    align-items: center;
+}
+
+#tableBlock1 {
+    position: relative;
+    height: 100%;
+    left: 10%;
+    width: 73%;
+  }
+
+  [data-tip] {
+    position:relative;
+
+}
+[data-tip]:before {
+    content:'';
+    /* hides the tooltip when not hovered */
+    display:none;
+    content:'';
+    display:none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #1a1a1a;
+    position:absolute;
+    top:30px;
+    left:35px;
+    z-index:8;
+    font-size:0;
+    line-height:0;
+    width:0;
+    height:0;
+    position:absolute;
+    top:30px;
+    left:35px;
+    z-index:8;
+    font-size:0;
+    line-height:0;
+    width:0;
+    height:0;
+}
+[data-tip]:after {
+    display:none;
+    content:attr(data-tip);
+    position:absolute;
+    top:35px;
+    left:0px;
+    padding:5px 8px 8px;
+    background:#1a1a1a;
+    color:#fff;
+    z-index:9;
+    font-size: 16px;
+    height:30px;
+    line-height:18px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    white-space:nowrap;
+    word-wrap:normal;
+}
+[data-tip]:hover:before,
+[data-tip]:hover:after {
+    display:block;
+}
+
+
+  

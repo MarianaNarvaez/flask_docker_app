@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Validate
+{% endblock %} 
+
+{% block content %}
+
+<div id="formContent">
+<div>
+    <form class="login100-form validate-form" method="POST" action="{{ url_for('Validation.GetPlantDetails') }}">
+        <link rel= "stylesheet"  href= "{{ url_for('static',filename='/css/main.css') }}">
+        <link rel= "stylesheet"  href= "{{ url_for('static',filename='/css/validate.css') }}">
+        <div id="content">
+            <div id="header">
+                <h1>Labor Intensity</h1> 
+                <input id="plantName" name=plantName class="input" type="text" value="{{plantName}}" readonly></input>
+                <div>
+                    <div id="lastMonth"><input id="inpLastMonth" name=LastDate class="input" type="text" value="Last month updated: {{LastDate}}" readonly></input></div>
+                    <div id="MonthUpdate"><input id="inpMonthUpdate" name=dateUpdate class="input" type="text" value="Month selected to update: {{dateUpdate}}" readonly></input></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div> 
+                <div id="h2Div">
+                    <h2>Validations</h2>
+                </div>
+                <div id="divBtnContents">
+                    <div id="divBtnBack">
+                        <button type="submit" id="backBtn" name="action" class="btn btn-secondary" value="backAppend">Back to Appendix</button>
+                    </div>
+                    {% if exepAppenVali==False or currVsAppe==False or ExeVsAppeOut==False%}
+                        <div id="divBtn" data-tip="You can't save until all validations are check">
+                            <button type="button" id="nextBtnFalse" name="action" class="btn btn-secondary" value="save">Save and close</button>
+                        </div>
+                    {% else %}
+                        <div id="divBtn">
+                            <button type="submit" id="nextBtn" name="action" class="btn btn-secondary" value="save">Save and close</button>
+                        </div>
+                    {% endif %}
+                </div>
+            </div> 
+            <div id="line"></div>
+            <div class="rowVal">
+                <div class="columnOne">
+                    <label class="valTitle">1. Exception Vs. Appendix A.</label>
+                    <div>
+                        {% if exepAppenVali==False: %}
+                            <label class="valiMessa">The total on Exceptions does not match the values reported on Appendix A. Please correct the values.</label>
+                            <div class="labNoMatch">
+                                <div id="lineLabels"></div>
+                                {% for key, value in noMatched.items(): %}      
+                                <div class="rowContent">
+                                    <label id="inputNameExe" class="input inputOne">Exception: </label>
+                                    <label class="input Exe">{{value[0]}}</label>
+                                    <input id="inputVal" value="{{value[1]}}" class="input" type="text"></td>
+                                </div>
+                
+                                <div class="rowContent">
+                                    <label id="inputNameAllo" class="input inputOne">Appendix A: </label>
+                                    {% if key=="Logistics" %} 
+                                        <label class="input AlloFlex">{{value[2]}}</label>
+                                    {% else %}
+                                        <label class="input Allo">{{value[2]}}</label>
+                                    {% endif %}
+                                    <input id="inputVal" value="{{value[3]}}" class="input" type="text"></td>
+                                </div>
+                                    <div id="lineLabels"></div>    
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <label class="valiMessa">Value on Exception properly match Appendix A.</label>
+                        {% endif %}
+                    </div>
+                    <div class="lastValida">
+                        <div class="valiLabor">
+                            <div>
+                                <label class="valTitle">2. Current labor Vs. Appendix A.</label>
+                            </div>
+                            <div>
+                                {% if currVsAppe==False: %}
+                                    <label class="valiMessa wrong">Plant data Current labor does not match the Total of the Appendix A. Please correct the values.</label>
+                                {% else %}
+                                    <label class="valiMessa correct">Value on Plant Data properly match Total on Appendix A</label>
+                                {% endif %}
+                                <div>
+                                    <label class="valiMessa nameFeature">Current labor: </label>
+                                    <label class="valiMessa">{{currLabor}}</label>
+                                </div>
+                                <div>
+                                    <label class="valiMessa nameFeature">Total Appendix A: </label>
+                                    <label class="valiMessa">{{sumAppenTot}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="valiExce"> 
+                            <div>
+                                <label class="valTitle">3. Total Exception Vs. Appendix A Outsource.</label>
+                            </div>
+                            <div>
+                                {% if ExeVsAppeOut==False: %}
+                                    <label class="valiMessa wrong">The total on Exception Block 1 does not match the Total of the "Outsource" column on Appendix A. Please correct the values.</label>
+                                {% else %}
+                                    <label class="valiMessa correct">Value on Total Exception Block 1 properly match Total on Appendix A Outsource.</label>
+                                {% endif %}
+                                <div>
+                                    <label class="valiMessa nameFeature">Total Exception Block 1: </label>
+                                    <label class="valiMessa">{{totfirstBlockExe}}</label>
+                                </div>
+                                <div class="valiThre">
+                                    <label class="valiMessa nameFeature">Appendix A Outsource: </label>
+                                    <label class="valiMess secVal">{{sumTotalOut}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <footer id="footer">
+        <p>For see more information about Labor Intensity app go to: <a href="https://owensillinois.sharepoint.com/:f:/r/teams/TSC/Labor/Manning%20Templates?csf=1&web=1&e=UMXwEe">Labor Intensity</a></p>
+    </footer>
+</div>
+</div>
+
+{% endblock %}

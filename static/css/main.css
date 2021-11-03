@@ -1,0 +1,205 @@
+input[type="number"] {
+  text-align: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+#form {
+  width: 100%;
+  height: 100%; 
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#header {
+  position: relative;
+  top: 0%;
+  left: 0%;
+  background: #8f9491;
+  background: rgba(51, 51, 51, 0.8);
+  max-width: 100%;
+  height: 200px;
+}
+
+footer {
+  position: relative;
+  top: 40px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background-color: rgb(122 16 16);
+  color: white;
+  text-align: center;
+  padding: 23px 0 38px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+h1 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 40px;
+  text-align: left;
+  color: white;
+  position: relative;
+  top: 15%;
+  left: 10%;
+  margin-top: 0px;
+}
+
+#plantName {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #f6f1df;
+  position: relative;
+  font-size: 30px;
+  top: 18%;
+  left: 10%;
+  margin: 0px 0px 0px 10px;
+}
+
+#content {
+  background: #bac7bf url(../img/header.jpg) no-repeat center center fixed;
+  background-size: 100% 100%;
+  background-attachment: local;
+}
+
+#lastMonth {
+  position: relative;
+  top: 29px;
+  float: right;
+  margin: 20px 20px 20px 20px;
+  height: 100%;
+  left: -23%;
+  width: 26%;
+  text-align: left;
+  color: #fff3e2e3;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+#MonthUpdate {
+  position: relative;
+  top: 52px;
+  float: left;
+  margin: 0px 0px 0px 10px;
+  height: 100%;
+  left: 10%;
+  width: 35%;
+  text-align: left;
+  color: #fff3e2e3;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#inpLastMonth {
+  width: 100%;
+}
+
+#inpMonthUpdate {
+  width: 100%;
+}
+
+#h2Div {
+  position: relative;
+  float: left;
+  top: 15px;
+  left: 10%;
+  width: 60%;
+}
+
+#divBtn {
+  position: relative;
+  float: right;
+  left: -90px;
+  width: 0%;
+}
+
+#divBtnBack {
+  position: absolute;
+  float: left;
+  right: 112px;
+}
+
+#divBtnContents{
+  position: relative;
+  float: left;
+  top: 38px;
+  left: 3px;
+  width: 20%;
+}
+
+#nextBtn{
+  position: relative;
+  color: white;
+  background-color:rgb(149 23 23);
+}
+
+#backBtn{
+  position: relative;
+  border-color: #8d8d8d;
+  color: rgb(255 255 255);
+  background-color:  #959191;
+}
+
+
+#line {
+  position: relative;
+  top: 90px;
+  left: 10%;
+  border-bottom: double #555;
+  width: 73%;
+}
+
+#column1 {
+  width: 80%;
+}
+
+#column2 {
+  width: 16%;
+}
+
+#inputText {
+  width: 100%;
+}
+
+#inputBox {
+  width: 100%;
+}
+
+#nextBtn {
+  position: relative;
+  color: white;
+  background-color: rgb(149 23 23);
+}
+
+#table {
+  position: relative;
+  height: 100%;
+  left: 10%;
+  width: 40%;
+}
+
+#divTableA {
+  position: relative;
+  float: left;
+  margin: 40px 20px 20px 20px;
+  height: 100%;
+  left: 5%;
+  width: 40%;
+}
+
+#divTableB {
+  position: relative;
+  float: right;
+  margin: 40px 20px 20px 0px;
+  height: 100%;
+  left: -13%;
+  width: 40%;
+}

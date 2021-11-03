@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Exception
+{% endblock %} 
+
+{% block content %}
+
+<div id="form">
+    <form id="formExcep" class="login100-form validate-form" method="POST" action="{{ url_for('ExceptionR.GetException') }}">
+        <link rel= "stylesheet"  href= "{{ url_for('static',filename='/css/main.css') }}">
+        <link rel= "stylesheet"  href= "{{ url_for('static',filename='/css/exception.css') }}">  
+        <div id="content"> 
+            <div id="header">
+                <h1>Labor Intensity</h1> 
+                <input id="plantName" name=plantName class="input" type="text" value="{{plantName}}" readonly></input>
+                <div>
+                    <div id="lastMonth"><input id="inpLastMonth" name=LastDate class="input" type="text" value="Last month updated: {{LastDate}}" readonly></input></div>
+                    <div id="MonthUpdate"><input id="inpMonthUpdate" name=dateUpdate class="input" type="text" value="Month selected to update: {{dateUpdate}}" readonly></input></div>
+                </div>
+            </div>  
+        </div>
+        <div>
+            <div id="h2Div">
+                <h2>Exception Reporting</h2>
+            </div>
+            <div id="divBtnContentsExce">
+                <div id="divBtnBack">
+                    <button type="submit" id="backBtn" name="action" class="btn btn-secondary" value="Back">Back to Plant Data</button>
+                </div>
+                <div id="divBtn">
+                    <button type="submit" id="nextBtn" name="action" class="btn btn-secondary" value="Appendix">Go to Appendix A</button>
+                </div>
+            </div>
+        </div>
+        <div id="line"></div>
+            <div name="Bock1">
+                <div>
+                    <td><input id="blockTittle" class="input" type="text" value="BLOCK 1: Outsourced Equivalent Headcount in Production Processes" readonly></td>
+                </div>
+                <div class="warningBlock1">
+                    <label class="remind">Reminders:</label>
+                    <ul>
+                        <li>The values for Block 1 should be a result of the calculation of the equivalent people used for the service. This calculation is a division of the total cost paid for the service times the average cost per one base worker in your plant.</li>
+                        <li>The values reported in the Block 1 should match the number of outsource people reported in the column “Outsource” in the Appendix A.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="outLabel">OUTSOURCE SERVICE</h4>
+                </div>
+                <table id="tableBlock1" class="table">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center">Role</th>
+                            <th style="text-align:center">Value</th>
+                            <th style="text-align:center">Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key, value in outCate.items(): %}
+                            <tr>
+                                <td id="column1Exc"><input id="inputName" value="{{value[0]}}" class="input widthInput" type="text" readonly></td>
+                                <td id="column2Exc"><input id="inputBoxExc" value="{{value[1]}}" class="input100 excfirstBlock" type="number" step="0.01" min="0" name={{key}}></td>
+                                <td id="column3Exc"><input id="inputBoxExc" value="{{value[4]}}" class="input100" name={{value[3]}}></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <hr>
+                <div id="calcSection">                  
+                    <div id="totblock1">
+                        <label name=totblock1>0</label>
+                        <input type="hidden" name=totalfirstBlock id="firstBlockTotal">
+                    </div>
+                    <div id="divLabelBloc1">
+                        <label name=totblock1 id="totalLabel">Total Block 1</label>
+                    </div>
+                </div>
+                <hr class="lineDownB1">
+            </div>
+            <div id="Bock2" name="Bock2">
+                <div id="divBlockTittle2">
+                    <td><input id="blockTittle2" class="input" type="text" value="BLOCK 2: O-I Payroll Employees Performing Non Production Process" readonly></td>
+                </div>
+                <div class="warningBlock1">
+                    <label class="remind">Reminders:</label>
+                    <ul>
+                        <li>Use the formulas applicable to specific exceptions (Automatic Lab dimension, Automatic Ramp Pressure Tester, and Sooting / ABL. See formulas on these fields below).</li>
+                        <li>Remember to subtract the amount of people credited to your plant by the template for specific roles. Declare as exceptions just the additional or extra people required for the activity due to significant differences with the ideal model.</li>
+                        <li>Remember to match the people reported as exception in the lines of the Block 2 with the amount of people reported in the Appendix A for that same role.</li>
+                    </ul>
+                </div>
+                <div id="divTableAExc">
+                    <div>
+                        <h4>NON PRODUCTION SERVICES</h4>
+                    </div>
+                    <table id="tableExc" class="table">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center">Role</th>
+                                <th style="text-align:center">Value</th>
+                                <th style="text-align:center">Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for key, value in nonCate.items(): %}
+                            <tr>
+                                <td id="column1Exc"><input id="inputName" value="{{value[0]}}" class="input widthInput" type="text" readonly></td>
+                                <td id="column2Exc"><input id="inputBoxExc" value="{{value[1]}}" class="input100 excsecondBlock" type="number" step="0.01" min="0" name={{key}}></td>
+                                <td id="column3Exc"><input id="inputBoxExc" value="{{value[4]}}" class="input100" name={{value[3]}}></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div>
+                        <h4>AUTOMATION</h4>
+                    </div>
+                    <table id="tableExc" class="table">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center">Role</th>
+                                <th style="text-align:center">Value</th>
+                                <th style="text-align:center">Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for key, value in autCate.items(): %}
+                                {% if key=="AutomaLab" %}
+                                    <tr>
+                                        <td id="column1Exc"><input id="inputName" value="{{value[0]}}" class="input widthInput" type="text" readonly></td>
+                                        <td id="column2Exc">
+                                            <div data-tip="1 person per day per 5 machines">
+                                                <input value="{{value[1]}}" class="inputBoxExc input100 excsecondBlock" type="number" step="0.01" min="0" name={{key}} >
+                                            </div>
+                                        </td>
+                                        <td id="column3Exc"><input id="inputBoxExc" value="{{value[4]}}" class="input100" name={{value[3]}}></td>
+                                    </tr>
+                                {% elif key=="AutomaRamp"%}
+                                    <tr>
+                                        <td id="column1Exc"><input id="inputName" value="{{value[0]}}" class="input widthInput" type="text" readonly></td>
+                                        <td id="column2Exc">
+                                            <div data-tip="1 person per shift per 4 machines producing carbonated jobs">
+                                                <input id="inputBoxExc" value="{{value[1]}}" class="input100 excsecondBlock" type="number" step="0.01" min="0" name={{key}}>
+                                            </div>
+                                        </td>
+                                        <td id="column3Exc"><input id="inputBoxExc" value="{{value[4]}}" class="input100" name={{value[3]}}></td>
+                                    </tr>
+                                {% elif key=="Sooting"%}
+                                    <tr>
+                                        <td id="column1Exc"><input id="inputName" value="{{value[0]}}" class="input widthInput" type="text" readonly></td>
+                                        <td id="column2Exc">
+                                            <div data-tip="1 person per shift per 8 machines without ABL">
+                                                <input id="inputBoxExc" value="{{value[1]}}" class="input100 excsecondBlock" type="number" step="0.01" min="0" name={{key}}>
+                                            </div>
+                                        </td>
+                                        <td id="column3Exc"><input id="inputBoxExc" value="{{value[4]}}" class="input100" name={{value[3]}}></td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td id="column1Exc"><input id="inputName" value="{{value[0]}}" class="input widthInput" type="text" readonly></td>
+                                        <td id="column2Exc"><input id="inputBoxExc" value="{{value[1]}}" class="input100 excsecondBlock" type="number" step="0.01" min="0" name={{key}}></td>
+                                        <td id="column3Exc"><input id="inputBoxExc" value="{{value[4]}}" class="input100" name={{value[3]}}></td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div>
+                        <h4>SECONDARY PROCESS</h4>
+                    </div>
+                    <table id="tableExc" class="table">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center">Role</th>
+                                <th style="text-align:center">Value</th>
+                                <th style="text-align:center">Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for key, value in secCate.items(): %}
+                                <tr>
+                                    <td id="column1Exc"><input id="inputName" value="{{value[0]}}" class="input widthInput" type="text" readonly></td>
+                                    <td id="column2Exc"><input id="inputBoxExc" value="{{value[1]}}" class="input100 excsecondBlock" type="number" step="0.01" min="0" name={{key}}></td>
+                                    <td id="column3Exc"><input id="inputBoxExc" value="{{value[4]}}" class="input100" name={{value[3]}}></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div>
+                        <h4>ADMINISTRATION</h4>
+                    </div>
+                    <table id="tableExc" class="table">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center">Role</th>
+                                <th style="text-align:center">Value</th>
+                                <th style="text-align:center">Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for key, value in adminCate.items(): %}
+                                <tr>
+                                    <td id="column1Exc"><input id="inputName" value="{{value[0]}}" class="input widthInput" type="text" readonly></td>
+                                    <td id="column2Exc"><input id="inputBoxExc" value="{{value[1]}}" class="input100 excsecondBlock" type="number" step="0.01" min="0" name={{key}}></td>
+                                    <td id="column3Exc"><input id="inputBoxExc" value="{{value[4]}}" class="input100" name={{value[3]}}></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <hr class="lineTopB2">
+                    <div id="totblock2">
+                        <label name=totblock2>0</label>
+                        <input type="hidden" name=totalSecBlock id="secondBlockTotal">
+                    </div>
+                    <div id="divCalBtn">
+                        <label name=totblock2 id="totalLabelB">Total Block 2</label>
+                    </div>
+                    <hr class="lineBotB2">
+                </div>
+            </div>
+        </div>  
+    </form>    
+</div>
+<footer>
+    <p>For see more information about Labor Intensity app go to: <a href="https://owensillinois.sharepoint.com/:f:/r/teams/TSC/Labor/Manning%20Templates?csf=1&web=1&e=UMXwEe">Labor Intensity</a></p>
+</footer>
+{% endblock %}
+

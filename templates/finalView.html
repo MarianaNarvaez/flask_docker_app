@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block title %}final{% endblock %}
+{% block head %}
+  {{ super() }}
+  <script type="text/javascript" >
+    function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+  </script>
+{% endblock %}
+
+{% block content %}
+
+  <link rel= "stylesheet"  href= "{{ url_for('static',filename='/css/login.css') }}">
+  <div id="loading"></div>
+  <div style="background-image: url('images/botellas.jpg');"></div>
+  <div id=formCont> 
+    <div id="formTem">
+      {% if message==True %}
+        <h2 id='tittle' class="save">Save Succesfully</h2> 
+      {% endif %}
+ 
+      {% if message==False %}
+        <h2 id='tittle' class="save">An error has occurred, please contact the area in charge.</h2> 
+      {% endif %}
+
+      <button onclick="window.location.href='/'">
+        Go to Login
+      </button>  
+    </div>
+   </div>
+{% endblock %}
